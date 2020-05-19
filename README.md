@@ -3,7 +3,7 @@
 1.api：用于存放所有的api接口
 2.basic：用于存放一些工具类，常量类等等
 3.service:包含各个子服务，每个服务都需要包含发布到Dubbo的端口号
-  xml文件配置如下
+  application.yml文件配置如下
   ~~~
   dubbo:
   application:
@@ -16,3 +16,5 @@
 server:
   port: 8080 #模块运行的端口号
   ~~~
+  主类添加
+  
