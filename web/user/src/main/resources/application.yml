@@ -1,0 +1,8 @@
+server:
+  port: 9090
+dubbo:
+  application:
+    name: user
+  registry:
+    protocol: zookeeper
+    address: 106.54.13.67:2181

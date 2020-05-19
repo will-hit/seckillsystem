@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/api/api.iml" filepath="$PROJECT_DIR$/api/api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basic/basic.iml" filepath="$PROJECT_DIR$/basic/basic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/seckillsystem.iml" filepath="$PROJECT_DIR$/.idea/seckillsystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service/service.iml" filepath="$PROJECT_DIR$/service/service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web/user/user.iml" filepath="$PROJECT_DIR$/web/user/user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api/user-api/user-api.iml" filepath="$PROJECT_DIR$/api/user-api/user-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service/user-service/user-service.iml" filepath="$PROJECT_DIR$/service/user-service/user-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
+    </modules>
+  </component>
+</project>

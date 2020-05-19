@@ -1,0 +1,13 @@
+dubbo:
+  application:
+    name: user-service
+  registry:
+    protocol: zookeeper
+    address: 106.54.13.67:2181
+  protocol:
+    port: 28800
+server:
+  port: 8080
+devtools:
+    restart:
+      enabled: false
