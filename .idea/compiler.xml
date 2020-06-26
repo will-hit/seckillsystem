@@ -6,20 +6,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="user" />
-        <module name="entity" />
-        <module name="api" />
         <module name="web" />
-        <module name="user-api" />
         <module name="mapper" />
-        <module name="user-service" />
+        <module name="api" />
+        <module name="common" />
+        <module name="entity" />
         <module name="service" />
+        <module name="user-api" />
+        <module name="user-service" />
+        <module name="user" />
         <module name="basic" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api" target="1.5" />
       <module name="basic" target="1.5" />
+      <module name="common" target="1.5" />
       <module name="entity" target="1.5" />
       <module name="mapper" target="1.5" />
       <module name="service" target="1.5" />

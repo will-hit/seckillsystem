@@ -5,7 +5,7 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="gender" property="gender" jdbcType="CHAR" />
-    <result column="phone" property="phone" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="CHAR" />
     <result column="mail" property="mail" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="CHAR" />
   </resultMap>
@@ -101,13 +101,13 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.softwareb.entity.User" >
+  <insert id="insert" parameterType="org.softwareb.entity.User" keyProperty="id" useGeneratedKeys="true">
     insert into user (id, name, gender, 
       phone, mail, type)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=CHAR}, 
-      #{phone,jdbcType=INTEGER}, #{mail,jdbcType=VARCHAR}, #{type,jdbcType=CHAR})
+      #{phone,jdbcType=CHAR}, #{mail,jdbcType=VARCHAR}, #{type,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.softwareb.entity.User" >
+  <insert id="insertSelective" parameterType="org.softwareb.entity.User" keyProperty="id" useGeneratedKeys="true">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -140,7 +140,7 @@
         #{gender,jdbcType=CHAR},
       </if>
       <if test="phone != null" >
-        #{phone,jdbcType=INTEGER},
+        #{phone,jdbcType=CHAR},
       </if>
       <if test="mail != null" >
         #{mail,jdbcType=VARCHAR},
@@ -169,7 +169,7 @@
         gender = #{record.gender,jdbcType=CHAR},
       </if>
       <if test="record.phone != null" >
-        phone = #{record.phone,jdbcType=INTEGER},
+        phone = #{record.phone,jdbcType=CHAR},
       </if>
       <if test="record.mail != null" >
         mail = #{record.mail,jdbcType=VARCHAR},
@@ -187,7 +187,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       gender = #{record.gender,jdbcType=CHAR},
-      phone = #{record.phone,jdbcType=INTEGER},
+      phone = #{record.phone,jdbcType=CHAR},
       mail = #{record.mail,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=CHAR}
     <if test="_parameter != null" >
@@ -204,7 +204,7 @@
         gender = #{gender,jdbcType=CHAR},
       </if>
       <if test="phone != null" >
-        phone = #{phone,jdbcType=INTEGER},
+        phone = #{phone,jdbcType=CHAR},
       </if>
       <if test="mail != null" >
         mail = #{mail,jdbcType=VARCHAR},
@@ -219,7 +219,7 @@
     update user
     set name = #{name,jdbcType=VARCHAR},
       gender = #{gender,jdbcType=CHAR},
-      phone = #{phone,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=CHAR},
       mail = #{mail,jdbcType=VARCHAR},
       type = #{type,jdbcType=CHAR}
     where id = #{id,jdbcType=INTEGER}

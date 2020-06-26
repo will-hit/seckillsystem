@@ -1,6 +1,8 @@
 package org.softwareb.entity;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
     private Integer id;
 
     private String name;
@@ -12,6 +14,17 @@ public class User {
     private String mail;
 
     private String type;
+
+    public User() {
+    }
+
+    public User(String name, String gender, String phone, String mail, String type) {
+        this.name = name;
+        this.gender = gender;
+        this.phone = phone;
+        this.mail = mail;
+        this.type = type;
+    }
 
     public Integer getId() {
         return id;

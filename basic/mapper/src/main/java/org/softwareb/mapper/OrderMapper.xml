@@ -107,7 +107,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.softwareb.entity.Order" >
+  <insert id="insert" parameterType="org.softwareb.entity.Order" keyProperty="id" useGeneratedKeys="true">
     insert into order_ (id, pid, uid, 
       money, create_time, pay_time, 
       status, receiver_address, receiver_phone, 

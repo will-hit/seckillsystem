@@ -1,4 +1,4 @@
-package org.softwareb.userservice.service.config;
+package org.softwareb.userservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

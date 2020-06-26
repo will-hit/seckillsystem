@@ -109,7 +109,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.softwareb.entity.Product" >
+  <insert id="insert" parameterType="org.softwareb.entity.Product" keyProperty="id" useGeneratedKeys="true">
     insert into product (id, name, image, 
       price, cost_price, create_time, 
       check_time, status, start_time, 

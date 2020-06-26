@@ -15,6 +15,7 @@
         <option value="$PROJECT_DIR$/web/user/pom.xml" />
         <option value="$PROJECT_DIR$/basic/entity/pom.xml" />
         <option value="$PROJECT_DIR$/basic/mapper/pom.xml" />
+        <option value="$PROJECT_DIR$/basic/common/pom.xml" />
       </list>
     </option>
   </component>

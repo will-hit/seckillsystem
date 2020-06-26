@@ -101,13 +101,13 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.softwareb.entity.User" >
+  <insert id="insert" parameterType="org.softwareb.entity.User" keyProperty="id" useGeneratedKeys="true">
     insert into user (id, name, gender, 
       phone, mail, type)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=CHAR}, 
       #{phone,jdbcType=CHAR}, #{mail,jdbcType=VARCHAR}, #{type,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.softwareb.entity.User" >
+  <insert id="insertSelective" parameterType="org.softwareb.entity.User" keyProperty="id" useGeneratedKeys="true">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
