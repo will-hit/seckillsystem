@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.Param;
 import org.softwareb.entity.User;
 import org.softwareb.entity.UserExample;
 
-
 public interface UserMapper {
     int countByExample(UserExample example);
 
