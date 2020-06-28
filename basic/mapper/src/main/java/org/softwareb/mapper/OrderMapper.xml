@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.softwareb.mapper.OrderMapper" >
   <resultMap id="BaseResultMap" type="org.softwareb.entity.Order" >
-    <id column="id" property="id" jdbcType="INTEGER" />
+    <id column="id" property="id" jdbcType="BIGINT" />
     <result column="pid" property="pid" jdbcType="INTEGER" />
     <result column="uid" property="uid" jdbcType="INTEGER" />
     <result column="money" property="money" jdbcType="CHAR" />
-    <result column="create_time" property="createTime" jdbcType="CHAR" />
-    <result column="pay_time" property="payTime" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
     <result column="status" property="status" jdbcType="CHAR" />
     <result column="receiver_address" property="receiverAddress" jdbcType="CHAR" />
     <result column="receiver_phone" property="receiverPhone" jdbcType="CHAR" />
@@ -91,15 +91,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from order_
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from order_
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="org.softwareb.entity.OrderExample" >
     delete from order_
@@ -107,17 +107,17 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.softwareb.entity.Order" keyProperty="id" useGeneratedKeys="true">
+  <insert id="insert" parameterType="org.softwareb.entity.Order" >
     insert into order_ (id, pid, uid, 
       money, create_time, pay_time, 
       status, receiver_address, receiver_phone, 
       receiver_name, transacton_id)
-    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, 
-      #{money,jdbcType=CHAR}, #{createTime,jdbcType=CHAR}, #{payTime,jdbcType=CHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{pid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, 
+      #{money,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, #{payTime,jdbcType=TIMESTAMP}, 
       #{status,jdbcType=CHAR}, #{receiverAddress,jdbcType=CHAR}, #{receiverPhone,jdbcType=CHAR}, 
       #{receiverName,jdbcType=CHAR}, #{transactonId,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.softwareb.entity.Order" >
+  <insert id="insertSelective" parameterType="org.softwareb.entity.Order" keyProperty="id" useGeneratedKeys="true">
     insert into order_
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -156,7 +156,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="pid != null" >
         #{pid,jdbcType=INTEGER},
@@ -168,10 +168,10 @@
         #{money,jdbcType=CHAR},
       </if>
       <if test="createTime != null" >
-        #{createTime,jdbcType=CHAR},
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="payTime != null" >
-        #{payTime,jdbcType=CHAR},
+        #{payTime,jdbcType=TIMESTAMP},
       </if>
       <if test="status != null" >
         #{status,jdbcType=CHAR},
@@ -200,7 +200,7 @@
     update order_
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
+        id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.pid != null" >
         pid = #{record.pid,jdbcType=INTEGER},
@@ -212,10 +212,10 @@
         money = #{record.money,jdbcType=CHAR},
       </if>
       <if test="record.createTime != null" >
-        create_time = #{record.createTime,jdbcType=CHAR},
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.payTime != null" >
-        pay_time = #{record.payTime,jdbcType=CHAR},
+        pay_time = #{record.payTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.status != null" >
         status = #{record.status,jdbcType=CHAR},
@@ -239,12 +239,12 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update order_
-    set id = #{record.id,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=BIGINT},
       pid = #{record.pid,jdbcType=INTEGER},
       uid = #{record.uid,jdbcType=INTEGER},
       money = #{record.money,jdbcType=CHAR},
-      create_time = #{record.createTime,jdbcType=CHAR},
-      pay_time = #{record.payTime,jdbcType=CHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      pay_time = #{record.payTime,jdbcType=TIMESTAMP},
       status = #{record.status,jdbcType=CHAR},
       receiver_address = #{record.receiverAddress,jdbcType=CHAR},
       receiver_phone = #{record.receiverPhone,jdbcType=CHAR},
@@ -267,10 +267,10 @@
         money = #{money,jdbcType=CHAR},
       </if>
       <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=CHAR},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="payTime != null" >
-        pay_time = #{payTime,jdbcType=CHAR},
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=CHAR},
@@ -288,20 +288,20 @@
         transacton_id = #{transactonId,jdbcType=CHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.softwareb.entity.Order" >
     update order_
     set pid = #{pid,jdbcType=INTEGER},
       uid = #{uid,jdbcType=INTEGER},
       money = #{money,jdbcType=CHAR},
-      create_time = #{createTime,jdbcType=CHAR},
-      pay_time = #{payTime,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
       status = #{status,jdbcType=CHAR},
       receiver_address = #{receiverAddress,jdbcType=CHAR},
       receiver_phone = #{receiverPhone,jdbcType=CHAR},
       receiver_name = #{receiverName,jdbcType=CHAR},
       transacton_id = #{transactonId,jdbcType=CHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

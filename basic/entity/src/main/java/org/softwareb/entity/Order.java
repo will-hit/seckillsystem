@@ -1,7 +1,10 @@
 package org.softwareb.entity;
 
-public class Order {
-    private Integer id;
+import java.io.Serializable;
+import java.util.Date;
+
+public class Order implements Serializable {
+    private Long id;
 
     private Integer pid;
 
@@ -9,9 +12,9 @@ public class Order {
 
     private String money;
 
-    private String createTime;
+    private Date createTime;
 
-    private String payTime;
+    private Date payTime;
 
     private String status;
 
@@ -23,11 +26,31 @@ public class Order {
 
     private String transactonId;
 
-    public Integer getId() {
+    public Order() {
+    }
+
+    public Order(Long id, Integer pid, Integer uid, String money,
+                 Date createTime, Date payTime, String status,
+                 String receiverAddress, String receiverPhone,
+                 String receiverName, String transactonId) {
+        this.id = id;
+        this.pid = pid;
+        this.uid = uid;
+        this.money = money;
+        this.createTime = createTime;
+        this.payTime = payTime;
+        this.status = status;
+        this.receiverAddress = receiverAddress;
+        this.receiverPhone = receiverPhone;
+        this.receiverName = receiverName;
+        this.transactonId = transactonId;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -55,20 +78,20 @@ public class Order {
         this.money = money == null ? null : money.trim();
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime == null ? null : createTime.trim();
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getPayTime() {
+    public Date getPayTime() {
         return payTime;
     }
 
-    public void setPayTime(String payTime) {
-        this.payTime = payTime == null ? null : payTime.trim();
+    public void setPayTime(Date payTime) {
+        this.payTime = payTime;
     }
 
     public String getStatus() {

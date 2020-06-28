@@ -7,6 +7,8 @@
       <module fileurl="file://$PROJECT_DIR$/basic/common/common.iml" filepath="$PROJECT_DIR$/basic/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/basic/entity/entity.iml" filepath="$PROJECT_DIR$/basic/entity/entity.iml" />
       <module fileurl="file://$PROJECT_DIR$/basic/mapper/mapper.iml" filepath="$PROJECT_DIR$/basic/mapper/mapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api/seckill-api/seckill-api.iml" filepath="$PROJECT_DIR$/api/seckill-api/seckill-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service/seckill-service/seckill-service.iml" filepath="$PROJECT_DIR$/service/seckill-service/seckill-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/seckillsystem.iml" filepath="$PROJECT_DIR$/.idea/seckillsystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/service/service.iml" filepath="$PROJECT_DIR$/service/service.iml" />
       <module fileurl="file://$PROJECT_DIR$/web/user/user.iml" filepath="$PROJECT_DIR$/web/user/user.iml" />

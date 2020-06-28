@@ -7,9 +7,11 @@ import org.softwareb.api.user.pojo.UserVO;
 import org.softwareb.common.pojo.ResultBean;
 import org.softwareb.entity.Login;
 import org.softwareb.entity.User;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/user")
 public class SSOController {
