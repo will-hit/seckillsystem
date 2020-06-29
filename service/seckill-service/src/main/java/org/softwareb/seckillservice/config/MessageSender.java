@@ -1,5 +1,6 @@
 package org.softwareb.seckillservice.config;
 
+import org.softwareb.api.seckill.pojo.MqMessage;
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessagePostProcessor;
@@ -13,7 +14,7 @@ public class MessageSender {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    public void sendMessage(Long message){
+    public void sendMessage(MqMessage message){
         rabbitTemplate.convertAndSend("user.order.delay_exchange", "user.order.delay_exchange",
                 message, new MessagePostProcessor() {
                     @Override

@@ -6,4 +6,8 @@ import org.softwareb.entity.Order;
 
 public interface ISeckillService {
     ResultBean addTask(Order order);
+
+    ResultBean checkStatus(int uid, int pid);
+
+    ResultBean queryWaitPaidOrderByUid(Integer uid);
 }
