@@ -7,9 +7,7 @@ import org.softwareb.api.user.pojo.UserVO;
 import org.softwareb.common.pojo.ResultBean;
 import org.softwareb.entity.Login;
 import org.softwareb.entity.User;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
@@ -19,9 +17,9 @@ public class SSOController {
     @Reference
     private IUserService userService;
 
-    @RequestMapping("/register")
-    public ResultBean register(UserVO vo){
-        System.out.println(Integer.MAX_VALUE);
+    @PostMapping(value = "/register", produces = "application/json;charset=UTF-8")
+    public ResultBean register(@RequestBody UserVO vo){
+        System.out.println(vo);
         Login login  = new Login(vo.getUsername(), vo.getPassword());
         User user = new User(vo.getName(), vo.getGender(), vo.getPhone(),
                 vo.getMail(), vo.getType());
@@ -29,8 +27,8 @@ public class SSOController {
         return res;
     }
 
-    @RequestMapping("/checkLogin")
-    public ResultBean checkLogin(Login login){
+    @PostMapping(value="/checkLogin", produces = "application/json;charset=UTF-8")
+    public ResultBean checkLogin(@RequestBody Login login){
         if (login == null){
             return ResultBean.error("用户未登录",500);
         }
@@ -42,8 +40,9 @@ public class SSOController {
         }
     }
 
-    @RequestMapping("/login")
-    public ResultBean login(Login login){
+    @PostMapping(value="/login", produces = "application/json;charset=UTF-8")
+    public ResultBean login(@RequestBody Login login){
+        System.out.println(login);
         ResultBean resultBean = userService.userLogin(login);
         return resultBean;
     }

@@ -21,6 +21,11 @@ spring:
       pool:
         max-active: 20
     password: tiger
+  rabbitmq:
+    host: 106.54.13.67
+    username: java
+    password: 123
+    virtual-host: /java
 snowflask:
   workerId: 10
   datacenterId: 1

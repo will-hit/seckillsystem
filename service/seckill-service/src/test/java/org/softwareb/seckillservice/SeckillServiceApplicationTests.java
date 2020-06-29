@@ -1,33 +1,24 @@
 package org.softwareb.seckillservice;
 
 import org.junit.jupiter.api.Test;
+import org.softwareb.seckillservice.config.MessageSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
+
+import java.util.Date;
 
 @SpringBootTest
 class SeckillServiceApplicationTests {
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private MessageSender messageSender;
 
     @Test
-    void contextLoads() {
-        String redisKey = "Test111111";
-        redisTemplate.opsForValue().set(redisKey, 1);
-        redisTemplate.boundListOps(redisKey).leftPush(1);
-        Integer o = (Integer) redisTemplate.boundListOps(redisKey).rightPop();
-        if(o == null){
-            System.out.println("null");
-        }else{
-            System.out.println(o.intValue());
-        }
-        o = (Integer) redisTemplate.boundListOps(redisKey).rightPop();
-        if(o == null){
-            System.out.println("null");
-        }else{
-            System.out.println(o.intValue());
-        }
+    void contextLoads() throws InterruptedException {
+        messageSender.sendMessage(103L);
+        System.out.println("消息发送完成 " + new Date());
+        Thread.sleep(20000L);
     }
 
 }

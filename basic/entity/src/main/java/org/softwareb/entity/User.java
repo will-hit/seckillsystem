@@ -13,7 +13,7 @@ public class User implements Serializable{
 
     private String mail;
 
-    private String type;
+    private String type; // 1: 普通用户  2：管理员
 
     public User() {
     }

@@ -18,6 +18,7 @@
         <option value="$PROJECT_DIR$/basic/common/pom.xml" />
         <option value="$PROJECT_DIR$/service/seckill-service/pom.xml" />
         <option value="$PROJECT_DIR$/api/seckill-api/pom.xml" />
+        <option value="$PROJECT_DIR$/web/seckill/pom.xml" />
       </list>
     </option>
   </component>

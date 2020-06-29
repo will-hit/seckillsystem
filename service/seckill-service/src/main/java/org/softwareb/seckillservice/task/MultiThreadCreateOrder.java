@@ -4,6 +4,7 @@ import org.softwareb.common.utils.SnowFlaskUtils;
 import org.softwareb.entity.Order;
 import org.softwareb.entity.Product;
 import org.softwareb.mapper.ProductMapper;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Async;
@@ -27,6 +28,9 @@ public class MultiThreadCreateOrder {
 
     @Autowired
     private SnowFlaskUtils snowFlaskUtils;
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     @Async("asyncServiceExecutor")
     public void createOrder(){

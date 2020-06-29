@@ -17,6 +17,15 @@ public class Login implements Serializable {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "Login{" +
+                "username='" + username + '\'' +
+                ", uid=" + uid +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
     public String getUsername() {
         return username;
     }
