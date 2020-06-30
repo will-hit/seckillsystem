@@ -58,6 +58,7 @@ public class SeckillService implements ISeckillService {
         StringBuilder redisKey = new StringBuilder(USERQUEUESTATUS);
         redisKey.append(":").append(uid).append(":").append(pid);
         Integer o = (Integer)redisTemplate.opsForValue().get(redisKey.toString());
+        System.out.println("userqueuestatus: " + o);
         if (o == null || o.intValue() == 0){
             return ResultBean.error("下单失败！", 500);
         }else if (o.intValue() == 1){
@@ -96,7 +97,7 @@ public class SeckillService implements ISeckillService {
         for (Product product : products) {
             StringBuilder redisKey = new StringBuilder(SECKILLGOODS);
             redisKey.append(product.getId());
-            Long size = redisTemplate.boundListOps(redisKey.toString()).size();
+            Long size = redisTemplate.opsForList().size(redisKey.toString());
             System.out.println("list size: " + size);
             product.setStockCount(size.intValue());
             res.add(product);

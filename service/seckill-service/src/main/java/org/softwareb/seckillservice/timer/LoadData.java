@@ -49,7 +49,7 @@ public class LoadData {
             StringBuilder stockredisKey = new StringBuilder(SECKILLGOODS);
             stockredisKey.append(":").append(product.getId());
             for (int stock = product.getStockCount(); stock > 0; stock--){
-                redisTemplate.boundListOps(stockredisKey.toString()).leftPush(1);
+                redisTemplate.opsForList().leftPush(stockredisKey.toString(),1);
             }
         }
     }

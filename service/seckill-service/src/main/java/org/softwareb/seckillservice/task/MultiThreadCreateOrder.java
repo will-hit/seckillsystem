@@ -48,9 +48,10 @@ public class MultiThreadCreateOrder {
         if(product != null){
             redisKey.append(":").append(product.getId());
             Integer one = (Integer) redisTemplate.boundListOps(redisKey.toString()).rightPop();
-
+            System.out.println("进入if-product");
             // 通过redis串行无锁操作解决不超买问题
             if (one != null){
+                System.out.println("进入if-one");
                 StringBuilder orderKey = new StringBuilder(SECKILLORDER);
                 order.setId(snowFlaskUtils.nextId());
                 order.setStatus(WAIT_PAID);
@@ -75,13 +76,13 @@ public class MultiThreadCreateOrder {
                     Ids.add(order.getPid());
                     redisTemplate.opsForValue().set(IdList.toString(), Ids);
                 }
-
                 // 改变状态记录 TODO 宕机了 可能造成某用户无法抢购
                 redisTemplate.opsForValue().set(userQueueStatus.toString(), 2, 2, TimeUnit.HOURS);
             }
-        }else{
-            redisTemplate.opsForValue().set(userQueueStatus.toString(), 0, 2, TimeUnit.HOURS);
+
         }
+        redisTemplate.opsForValue().set(userQueueStatus.toString(), 0, 2, TimeUnit.HOURS);
+
 
     }
 
