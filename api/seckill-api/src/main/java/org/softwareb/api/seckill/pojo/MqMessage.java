@@ -30,4 +30,12 @@ public class MqMessage implements Serializable {
         this.uid = uid;
         this.pid = pid;
     }
+
+    @Override
+    public String toString() {
+        return "MqMessage{" +
+                "uid=" + uid +
+                ", pid=" + pid +
+                '}';
+    }
 }

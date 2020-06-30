@@ -10,4 +10,8 @@ public interface ISeckillService {
     ResultBean checkStatus(int uid, int pid);
 
     ResultBean queryWaitPaidOrderByUid(Integer uid);
+
+    ResultBean queryAllProduct();
+
+    ResultBean payOrderSuccess(Integer pid, Integer uid);
 }

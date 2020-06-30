@@ -40,6 +40,7 @@ public class MultiThreadCreateOrder {
     public void createOrder(){
         Order order = (Order)redisTemplate.boundListOps(GOODSWAITQUEUE).rightPop();
         Integer pid = order.getPid();
+        System.out.println("pid:" + pid);
         Product product = (Product)redisTemplate.boundHashOps(SECKILLGOODS).get(pid);
         StringBuilder redisKey = new StringBuilder(SECKILLGOODS);
         StringBuilder userQueueStatus = new StringBuilder(USERQUEUESTATUS);
@@ -54,6 +55,7 @@ public class MultiThreadCreateOrder {
                 order.setId(snowFlaskUtils.nextId());
                 order.setStatus(WAIT_PAID);
                 order.setCreateTime(new Date());
+                order.setMoney(String.valueOf(product.getPrice().intValue()));
 
                 orderKey.append(":").append(order.getPid());
                 redisTemplate.boundHashOps(orderKey.toString()).put(order.getUid(), order);

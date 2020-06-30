@@ -20,7 +20,7 @@ public class MessageSender {
                     @Override
                     public Message postProcessMessage(Message message) throws AmqpException {
                         // 设置过期时间为10s
-                        message.getMessageProperties().setExpiration("10000");
+                        message.getMessageProperties().setExpiration("30000");
                         return message;
                     }
                 });

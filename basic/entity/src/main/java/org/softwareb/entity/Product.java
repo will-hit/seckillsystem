@@ -1,9 +1,10 @@
 package org.softwareb.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Product {
+public class Product implements Serializable {
     private Integer id;
 
     private String name;
@@ -132,5 +133,47 @@ public class Product {
 
     public void setSellerId(Integer sellerId) {
         this.sellerId = sellerId;
+    }
+
+    public Product(Integer id, String name, String image,
+                   BigDecimal price, BigDecimal costPrice,
+                   Date createTime, Date checkTime, String status,
+                   Date startTime, Date endTime, Integer stockCount,
+                   String description, Integer sellerId) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.price = price;
+        this.costPrice = costPrice;
+        this.createTime = createTime;
+        this.checkTime = checkTime;
+        this.status = status;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.stockCount = stockCount;
+        this.description = description;
+        this.sellerId = sellerId;
+    }
+
+    public Product() {
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", image='" + image + '\'' +
+                ", price=" + price +
+                ", costPrice=" + costPrice +
+                ", createTime=" + createTime +
+                ", checkTime=" + checkTime +
+                ", status='" + status + '\'' +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", stockCount=" + stockCount +
+                ", description='" + description + '\'' +
+                ", sellerId=" + sellerId +
+                '}';
     }
 }

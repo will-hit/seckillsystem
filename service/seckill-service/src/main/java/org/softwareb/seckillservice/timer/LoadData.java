@@ -29,7 +29,7 @@ public class LoadData {
     // 定时从数据库中将秒杀信息读取到redis中 条件:库存>0 且不在redis中
     //（时间区间选取暂时没做）
     // TODO 时间调整
-    @Scheduled(cron = "0/10 0/1 * * * ? ")
+    @Scheduled(cron = "0 0/1 * * * ?")
     public void loadData(){
         System.out.println("正在循环读取");
         redisTemplate.setKeySerializer(new StringRedisSerializer());
@@ -46,9 +46,10 @@ public class LoadData {
             System.out.println(product);
             redisTemplate.boundHashOps(SECKILLGOODS).put(product.getId(), product);
             // 读入redis库存用于分布式锁
-            redisKey.append(":").append(product.getId());
+            StringBuilder stockredisKey = new StringBuilder(SECKILLGOODS);
+            stockredisKey.append(":").append(product.getId());
             for (int stock = product.getStockCount(); stock > 0; stock--){
-                redisTemplate.boundListOps(redisKey.toString()).leftPush(1);
+                redisTemplate.boundListOps(stockredisKey.toString()).leftPush(1);
             }
         }
     }

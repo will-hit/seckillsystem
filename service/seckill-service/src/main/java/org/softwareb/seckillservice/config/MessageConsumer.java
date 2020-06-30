@@ -5,18 +5,15 @@ import org.softwareb.entity.Order;
 import org.softwareb.mapper.OrderMapper;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import java.util.Date;
 import java.util.List;
 
 import static org.softwareb.common.constant.RedisKeyConstant.*;
 
 @Configuration
-@RabbitListener(queues = "user.order.receive_queue")
 public class MessageConsumer {
 
     @Autowired
@@ -25,13 +22,14 @@ public class MessageConsumer {
     @Autowired
     private RedisTemplate redisTemplate;
 
+    @RabbitListener(queues = "user.order.receive_queue")
     @RabbitHandler
     private void receiveMessage(MqMessage message){
         System.out.println(message);
         StringBuilder orderkey = new StringBuilder(SECKILLORDER);
         orderkey.append(":").append(message.getPid());
         Order order = (Order)redisTemplate.boundHashOps(orderkey.toString()).get(message.getUid());
-//        if (order == null)
+        if (order == null)return;
         Order orderDB = orderMapper.selectByPrimaryKey(order.getId());
         // order.status "0": 无效订单 "1":待付款 "2"：待发货 "3"：待收货 "4"：待评价
         // 未按时付款 进行回滚操作
@@ -49,7 +47,7 @@ public class MessageConsumer {
         IdList.append(":").append(order.getUid());
         List Ids = (List)redisTemplate.opsForValue().get(IdList.toString());
         if (Ids != null){
-            Ids.remove(order.getId());
+            Ids.remove(order.getPid());
             redisTemplate.opsForValue().set(IdList.toString(), Ids);
         }
         // 删除排队状态

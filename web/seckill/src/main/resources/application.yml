@@ -1,0 +1,8 @@
+server:
+  port: 9091
+dubbo:
+  application:
+    name: seckill
+  registry:
+    protocol: zookeeper
+    address: 106.54.13.67:2181

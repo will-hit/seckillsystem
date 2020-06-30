@@ -16,7 +16,7 @@ public class Order implements Serializable {
 
     private Date payTime;
 
-    private String status;
+    private String status; // order.status "0": 无效订单 "1":待付款 "2"：待发货 "3"：待收货 "4"：待评价
 
     private String receiverAddress;
 
@@ -132,5 +132,22 @@ public class Order implements Serializable {
 
     public void setTransactonId(String transactonId) {
         this.transactonId = transactonId == null ? null : transactonId.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", pid=" + pid +
+                ", uid=" + uid +
+                ", money='" + money + '\'' +
+                ", createTime=" + createTime +
+                ", payTime=" + payTime +
+                ", status='" + status + '\'' +
+                ", receiverAddress='" + receiverAddress + '\'' +
+                ", receiverPhone='" + receiverPhone + '\'' +
+                ", receiverName='" + receiverName + '\'' +
+                ", transactonId='" + transactonId + '\'' +
+                '}';
     }
 }

@@ -16,9 +16,9 @@ class SeckillServiceApplicationTests {
 
     @Test
     void contextLoads() throws InterruptedException {
-        messageSender.sendMessage(103L);
-        System.out.println("消息发送完成 " + new Date());
-        Thread.sleep(20000L);
+//        messageSender.sendMessage(103L);
+//        System.out.println("消息发送完成 " + new Date());
+//        Thread.sleep(20000L);
     }
 
 }
