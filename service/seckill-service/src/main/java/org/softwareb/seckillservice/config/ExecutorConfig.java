@@ -20,7 +20,7 @@ public class ExecutorConfig {
         //配置核心线程数
         executor.setCorePoolSize(coresize);
         executor.setMaxPoolSize(2*coresize);
-        executor.setQueueCapacity(100);
+        executor.setQueueCapacity(1000);
         executor.setKeepAliveSeconds(300);
         executor.setThreadNamePrefix("Thread-");
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());

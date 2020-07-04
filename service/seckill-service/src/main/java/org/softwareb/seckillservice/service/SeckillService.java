@@ -96,7 +96,7 @@ public class SeckillService implements ISeckillService {
         List<Product> res = new ArrayList<>();
         for (Product product : products) {
             StringBuilder redisKey = new StringBuilder(SECKILLGOODS);
-            redisKey.append(product.getId());
+            redisKey.append(":").append(product.getId());
             Long size = redisTemplate.opsForList().size(redisKey.toString());
             System.out.println("list size: " + size);
             product.setStockCount(size.intValue());

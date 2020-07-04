@@ -12,15 +12,9 @@ import java.util.Date;
 @SpringBootTest
 class SeckillServiceApplicationTests {
 
-
-
-    @Autowired
-    private RedisTemplate redisTemplate;
-
     @Test
-    void contextLoads() throws InterruptedException {
-        Long size = redisTemplate.opsForList().size("SecKillGoods:1");
-        System.out.println("size: " + size);
+    void contextLoads(){
+
     }
 
 }
